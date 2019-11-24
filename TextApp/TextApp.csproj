@@ -43,6 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\IDigit.cs" />
+    <Compile Include="Model\IPunctuation.cs" />
+    <Compile Include="Model\ISentenceItem.cs" />
+    <Compile Include="Model\IText.cs" />
+    <Compile Include="Model\IWord.cs" />
+    <Compile Include="Model\Impl\Sentence.cs" />
+    <Compile Include="Model\Impl\Word.cs" />
+    <Compile Include="Model\ISentence.cs" />
+    <Compile Include="Model\ITextable.cs" />
+    <Compile Include="Model\Impl\Text.cs" />
+    <Compile Include="Model\Impl\Symbol.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
