@@ -10,6 +10,8 @@ namespace TextApp.Model.Impl
     {
         public IList<ISentence> Sentences { get; set; }
 
+        public ISentence this[int index] => Sentences[index];
+
         public Text()
         {
             Sentences = new List<ISentence>();
@@ -22,9 +24,26 @@ namespace TextApp.Model.Impl
                 Sentences.Add(sentence);
             }
         }
-       
 
+        public IEnumerable<ISentence> GetSentencesInAscendingOrder()
+        {
+            return Sentences.OrderBy(s=>s.SentenceItems.Where(x=>x is IWord).Count());
 
+        }
 
+        public IEnumerable<IWord> GetWordsFromInterrogativeSentence(int length)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAllWordsStartingWhisConsonant()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReplaceWordWithSubString(int sentenceNumber, int wordNumber, string sunstituteLine)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

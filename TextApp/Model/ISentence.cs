@@ -1,7 +1,10 @@
-﻿namespace TextApp.Model
+﻿using System.Collections.Generic;
+
+namespace TextApp.Model
 {
-    internal interface ISentence
-    {
+    interface ISentence
+    { 
+        IEnumerable<ISentenceItem> SentenceItems { get; }
         bool IsInterrogative { get; }
     }
 }
