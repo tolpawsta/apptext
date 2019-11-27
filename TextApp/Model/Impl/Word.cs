@@ -19,6 +19,8 @@ namespace TextApp.Model.Impl
         }
         public Symbol this[int index] => Symbols[index];
 
+        
+
         public Symbol[] Symbols { get; }
 
         public int Length { get; }
@@ -35,9 +37,11 @@ namespace TextApp.Model.Impl
 
         }
 
+        InitialSymbolType IWord.InitialSymbol => throw new NotImplementedException();
+
         public InitialSymbolType InitialSymbol(string[] vowels)
         {
-            return Char.IsDigit(Symbols[0].Chars[0]) ? InitialSymbolType.Digit : vowels.Contains(Symbols[0].Chars) ? InitialSymbolType.Vowel : InitialSymbolType.Consonant;
+            return Char.IsDigit(Symbols[0].Chars[0]) ? InitialSymbolType.Numeral : vowels.Contains(Symbols[0].Chars) ? InitialSymbolType.Vowel : InitialSymbolType.Consonant;
         }
     }
 }

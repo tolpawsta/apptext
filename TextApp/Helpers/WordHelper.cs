@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TextApp.Model
 {
-    interface IPunctuation:ISentenceItem
+    class WordHelper
     {
-        Symbol Symbols { get; }
+       public static string[] vovels = {"a", "e", "i", "o", "u"};
     }
 }

@@ -16,5 +16,7 @@ namespace TextApp.Model.Impl
         public Symbol Symbols { get; }
 
         public string Chars => Symbols.Chars;
+
+       
     }
 }

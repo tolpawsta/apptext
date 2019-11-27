@@ -9,9 +9,16 @@ namespace TextApp.Model.Impl
 {
     class Sentence:ISentence
     {
-        public Sentence(IEnumerable<ISentenceItem> sentenceItems)
+        public Sentence()
         {
-            SentenceItems = sentenceItems?.ToList();
+            SentenceItems = new List<ISentenceItem>();
+        }
+        public Sentence(IEnumerable<ISentenceItem> sentenceItems):this()
+        {
+            foreach (var item in sentenceItems)
+            {
+                SentenceItems.Add(item);
+            }
         }
 
         public IList<ISentenceItem> SentenceItems { get; }
