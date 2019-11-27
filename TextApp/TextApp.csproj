@@ -43,8 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\IDigit.cs" />
-    <Compile Include="Model\Impl\Digit.cs" />
     <Compile Include="Model\Emun\SentenceType.cs" />
     <Compile Include="Model\Emun\InitialSymbolType.cs" />
     <Compile Include="Model\Impl\Punctuation.cs" />
