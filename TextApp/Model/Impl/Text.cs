@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextApp.Model.Enum;
 
 namespace TextApp.Model.Impl
 {
@@ -27,16 +28,16 @@ namespace TextApp.Model.Impl
 
         public IEnumerable<ISentence> GetSentencesInAscendingOrder()
         {
-            return Sentences.OrderBy(s=>s.SentenceItems.Where(x=>x is IWord).Count());
+            return Sentences.OrderBy(s=>s.SentenceItems.OfType<IWord>().Count());
 
         }
 
-        public IEnumerable<IWord> GetWordsFromInterrogativeSentence(int length)
+        public IEnumerable<IWord> GetWordsFromSentence(int lengthWord,SentenceType sentenceType)
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveAllWordsStartingWhisConsonant()
+        public void RemoveAllWordsStartingWhis(InitialSymbolType initialSymbol)
         {
             throw new NotImplementedException();
         }

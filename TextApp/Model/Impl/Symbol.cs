@@ -2,16 +2,17 @@
 {
     struct Symbol
     {
-        string Symbols { get; }
+       public string Chars { get; }
 
+        
         public Symbol(string symbols)
         {
-            Symbols = symbols;
+            Chars = symbols;
         }
 
         public Symbol(char symbol)
         {
-            Symbols = $"{symbol}";
+            Chars = symbol.ToString();
         }
     }
 }

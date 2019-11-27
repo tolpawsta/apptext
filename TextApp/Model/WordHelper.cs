@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace TextApp.Model
 {
-    interface IDigit:ISentenceItem
+    class WordHelper
     {
-        Symbol[] Simbols { get; }
-        Symbol this[int index] { get; }
-        int Length { get; }
+       public static string[] vovels = {"a", "e", "i", "o", "u"};
     }
 }

@@ -8,8 +8,13 @@ namespace TextApp.Model.Impl
 {
     class Punctuation : IPunctuation
     {
-        public Symbol Simbols => throw new NotImplementedException();
+        
+        public Punctuation(string chars)
+        {
+           Symbols = new Symbol(chars);
+        }
+        public Symbol Symbols { get; }
 
-        public string Chars => throw new NotImplementedException();
+        public string Chars => Symbols.Chars;
     }
 }

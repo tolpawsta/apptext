@@ -1,4 +1,6 @@
-﻿namespace TextApp.Model
+﻿using TextApp.Model.Enum;
+
+namespace TextApp.Model
 {
     interface IWord:ISentenceItem
     {
@@ -6,6 +8,6 @@
         Symbol[] this[int index] { get; }
         int Length { get; }
         int LineNumber { get; }
-        bool IsConsonant { get; }
+        InitialSymbolType InitialSymbol { get; }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using TextApp.Model.Enum;
 
 namespace TextApp.Model
 {
     interface ISentence
     { 
-        IEnumerable<ISentenceItem> SentenceItems { get; }
-        bool IsInterrogative { get; }
+        IList<ISentenceItem> SentenceItems { get; }
+        SentenceType sentenceType { get; }
+
     }
 }
