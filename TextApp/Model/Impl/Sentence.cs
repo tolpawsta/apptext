@@ -8,14 +8,14 @@ using TextApp.Model.Enum;
 
 namespace TextApp.Model.Impl
 {
-    class Sentence:ISentence
+    class Sentence : ISentence
     {
         private int _index;
         public Sentence()
         {
             SentenceItems = new List<ISentenceItem>();
         }
-        public Sentence(IEnumerable<ISentenceItem> sentenceItems):this()
+        public Sentence(IEnumerable<ISentenceItem> sentenceItems) : this()
         {
             foreach (var item in sentenceItems)
             {
@@ -25,19 +25,26 @@ namespace TextApp.Model.Impl
 
         public IList<ISentenceItem> SentenceItems { get; }
 
-        public SentenceType sentenceType {
+        public SentenceType SentenceType
+        {
             get
             {
                 return SentenceHelper.GetSentenceType(SentenceItems.Last());
             }
         }
+
+        public IEnumerable<IWord> GetWordsWithoutRepetition(int length)
+        {
+          return SentenceItems.Where(s => s is IWord).Cast<IWord>().Where(s => s.Length == length);
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
             sb.Append(" ");
             CombineSentenceItems(-1, sb);
             return sb.ToString();
-            
+
         }
 
         private void CombineSentenceItems(int index, StringBuilder sb)
@@ -61,12 +68,12 @@ namespace TextApp.Model.Impl
                 {
                     break;
                 }
-                if (PunctuationHelper.OpenSymbols.Contains(SentenceItems[_index].Chars)||
+                if (PunctuationHelper.OpenSymbols.Contains(SentenceItems[_index].Chars) ||
                     PunctuationHelper.RepeatSymbols.Contains(SentenceItems[_index].Chars))
                 {
                     CombineSentenceItems(_index, sb);
                 }
-               
+
                 if (!PunctuationHelper.CloseSymbols.Contains(nextElement.Chars))
                 {
                     sb.Append(" ");

@@ -34,7 +34,13 @@ namespace TextApp.Model.Impl
 
         public IEnumerable<IWord> GetWordsFromSentence(int lengthWord,SentenceType sentenceType)
         {
-            throw new NotImplementedException();
+            var result = new List<IWord>();
+            var sentences = Sentences.Where(s => s.SentenceType == sentenceType).ToList();
+            foreach (var sentence in sentences)
+            {
+                result.AddRange(sentence.GetWordsWithoutRepetition(lengthWord));
+            }
+            return result.GroupBy(x => x.Chars.ToLower()).Select(x => x.First()).ToList();
         }
 
         public void RemoveAllWordsStartingWhis(InitialSymbolType initialSymbol)

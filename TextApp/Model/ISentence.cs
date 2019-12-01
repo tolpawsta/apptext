@@ -6,7 +6,8 @@ namespace TextApp.Model
     interface ISentence
     { 
         IList<ISentenceItem> SentenceItems { get; }
-        SentenceType sentenceType { get; }
+        SentenceType SentenceType { get; }
+        IEnumerable<IWord> GetWordsWithoutRepetition(int length);
 
     }
 }
