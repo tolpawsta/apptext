@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +48,8 @@
     <Compile Include="Helpers\PunctuationHelper.cs" />
     <Compile Include="Helpers\SentenceHelper.cs" />
     <Compile Include="Helpers\WordHelper.cs" />
+    <Compile Include="Model\Impl\Number.cs" />
+    <Compile Include="Model\INumber.cs" />
     <Compile Include="Parser\IParser.cs" />
     <Compile Include="Model\Emun\SentenceType.cs" />
     <Compile Include="Model\Emun\InitialSymbolType.cs" />
@@ -68,6 +71,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Files\file.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -47,6 +47,14 @@ namespace TextApp.Model.Impl
             throw new NotImplementedException();
         }
 
-        
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            foreach (var sentence in Sentences)
+            {
+                sb.Append(sentence.ToString());
+            }
+            return sb.ToString();
+        }
     }
 }

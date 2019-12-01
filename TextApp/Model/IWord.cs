@@ -2,12 +2,10 @@
 
 namespace TextApp.Model
 {
-    interface IWord:ISentenceItem
+    interface IWord : ISentenceItem
     {
-        Symbol[] Symbols { get; }
-        Symbol this[int index] { get; }
         int Length { get; }
-        int LineNumber { get; }
-        InitialSymbolType InitialSymbol { get; }
+        int LineNumber { get; set; }
+        InitialSymbolType InitialSymbol(string[] vowels);
     }
 }

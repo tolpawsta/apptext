@@ -16,7 +16,7 @@ namespace TextApp.Model
                 throw new FormatException("Не удается установить тип");
             }
             IPunctuation punctuation = (IPunctuation)sentenceItem;
-            if (punctuation.Chars.Equals("."))
+            if (punctuation.Chars.Contains("."))
             {
                 return SentenceType.Declarative;
             }
