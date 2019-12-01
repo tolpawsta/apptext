@@ -26,6 +26,8 @@ namespace TextApp
 
                 IText text = parser.Parse(streamReader);
                 Console.WriteLine(text.ToString());
+                Console.WriteLine("==========================================");
+                text.GetWordsFromSentence(5, Model.Enum.SentenceType.Interrogative).ToList().ForEach(Console.WriteLine);
             }
             catch (FileNotFoundException fileException)
             {
