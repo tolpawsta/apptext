@@ -32,7 +32,7 @@ namespace TextApp.Model.Impl
 
         }
 
-        public IEnumerable<IWord> GetWordsFromSentence(int lengthWord,SentenceType sentenceType)
+        public IEnumerable<IWord> FindWordsFromSentence(int lengthWord,SentenceType sentenceType)
         {
             var result = new List<IWord>();
             var sentences = Sentences.Where(s => s.SentenceType == sentenceType).ToList();
@@ -43,16 +43,19 @@ namespace TextApp.Model.Impl
             return result.GroupBy(x => x.Chars.ToLower()).Select(x => x.First()).ToList();
         }
 
-        public void RemoveAllWordsStartingWhis(InitialSymbolType initialSymbol)
+        public void RemoveAllWordsStartingWhis(int lengthWord,InitialSymbolType initialSymbol)
         {
-            throw new NotImplementedException();
+            Sentences = Sentences.Select(s => s.RemoveWordsBy(w => w.Length == lengthWord && w.InitialSymbol(WordHelper.RuEngVowels) == initialSymbol)).ToList();
         }
 
-        public void ReplaceWordWithSubString(int sentenceNumber, int wordNumber, string sunstituteLine)
+        public void ReplaceWordWithElements(int sentenceNumber, int lengthWord, List<ISentenceItem> elements)
         {
-            throw new NotImplementedException();
+            Sentences[sentenceNumber] = new Sentence(Sentences[sentenceNumber].ReplaceWordByElements(w => w.Length == lengthWord, elements));
         }
-
+        public void ReplaceWordWithSubString(int sentenceNumber, int lengthWord, string subString, Func<string, ISentence> predicate)
+        {
+            Sentences[sentenceNumber] = new Sentence(Sentences[sentenceNumber].ReplaceWordByElements((w => w.Length == lengthWord),predicate(subString).SentenceItems));
+        }
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -62,5 +65,7 @@ namespace TextApp.Model.Impl
             }
             return sb.ToString();
         }
+
+        
     }
 }

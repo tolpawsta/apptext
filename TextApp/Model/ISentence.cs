@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TextApp.Model.Enum;
 
 namespace TextApp.Model
@@ -8,6 +9,9 @@ namespace TextApp.Model
         IList<ISentenceItem> SentenceItems { get; }
         SentenceType SentenceType { get; }
         IEnumerable<IWord> GetWordsWithoutRepetition(int length);
+        ISentence RemoveWordsBy(Func<IWord, bool> predicate);
+        IEnumerable<ISentenceItem> ReplaceWordByElements(Func<IWord, bool> predicate, IList<ISentenceItem> elements);
+       
 
     }
 }

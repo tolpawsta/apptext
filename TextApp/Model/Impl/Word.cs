@@ -25,7 +25,7 @@ namespace TextApp.Model.Impl
 
         public InitialSymbolType InitialSymbol(string[] vowels)
         {
-            return Char.IsDigit(_chars[0]) ? InitialSymbolType.Numeral : vowels.Contains(_chars[0].ToString()) ? InitialSymbolType.Vowel : InitialSymbolType.Consonant;
+            return Char.IsDigit(_chars[0]) ? InitialSymbolType.Numeral : vowels.Contains(_chars[0].ToString().ToLower()) ? InitialSymbolType.Vowel : InitialSymbolType.Consonant;
         }
     }
 }

@@ -11,8 +11,9 @@ namespace TextApp.Model
     {
         ISentence this[int index] { get; }
         IEnumerable<ISentence> GetSentencesInAscendingOrder();
-        IEnumerable<IWord> GetWordsFromSentence(int lengthWord, SentenceType sentenceType);
-        void RemoveAllWordsStartingWhis(InitialSymbolType initialSymbol);
-        void ReplaceWordWithSubString(int sentenceNumber, int wordNumber, string sunstituteLine);
+        IEnumerable<IWord> FindWordsFromSentence(int lengthWord, SentenceType sentenceType);
+        void RemoveAllWordsStartingWhis(int lengthWord, InitialSymbolType initialSymbol);
+        void ReplaceWordWithElements(int sentenceNumber, int lengthWord, List<ISentenceItem> elements);
+        void ReplaceWordWithSubString(int sentenceNumber, int lengthWord, string subString, Func<string,ISentence> predicate);
     }
 }

@@ -21,10 +21,10 @@ namespace TextApp.Parser
             new Regex(
                 @"(\W*)(\w+[\-|`]\w+)(\!\=|\>\=|\=\<|\/|\=\=|\?\!|\!\?|\.{3}|\W)|(\W*)(\w+|\d+)(\!\=|\>\=|\=\<|\/|\=\=|\?\!|\!\?|\.{3}|\r\n|\W)|(.*)",
                 RegexOptions.Compiled);
-        private readonly Regex _removeWhiteSpaceBeforePunctRegex = new Regex(@"(\s+(?=[,;!?\)\>\}\]]))", RegexOptions.Compiled);
-        private readonly Regex _removeWhiteSpaceAfterPunctRegex = new Regex(@"((?<=[(<{[])\s+)", RegexOptions.Compiled);
+        private readonly Regex _removeWhiteSpaceBeforePunctRegex = new Regex(@"(\s+(?=[,;\.!?\)\>\}\]]))", RegexOptions.Compiled);
+        private readonly Regex _removeWhiteSpaceAfterPunctRegex = new Regex(@"((?<=[(<{\[])\s+)", RegexOptions.Compiled);
         private readonly Regex _removeMultiWhiteSpaceRegex = new Regex(@"\s+", RegexOptions.Compiled);
-        private Regex _removeDuplicatePunctuationRegex;
+      
         public IList<ISentenceItem> GetSentenceItems(string wordsKit)
         {
             throw new NotImplementedException();
@@ -45,7 +45,7 @@ namespace TextApp.Parser
                         line = ProcessedSentence(line);
                         line = buffer+line;
                         var sentences = _lineToSentenceRegex.Split(line)
-                            .Select(x => Regex.Replace(x, @"\s+", @" "))
+                            .Select(x =>Regex.Replace(x, @"\s+", @" "))
                             .ToArray();
 
                         if (!PunctuationHelper.EndSymsols.Contains(sentences.Last().Last().ToString()))

@@ -35,7 +35,27 @@ namespace TextApp.Model.Impl
 
         public IEnumerable<IWord> GetWordsWithoutRepetition(int length)
         {
-          return SentenceItems.Where(s => s is IWord).Cast<IWord>().Where(s => s.Length == length);
+            return SentenceItems.Where(s => s is IWord).Cast<IWord>().Where(s => s.Length == length);
+        }
+
+        public ISentence RemoveWordsBy(Func<IWord, bool> predicate)
+        {
+            return new Sentence(SentenceItems.Where(s => !(s is IWord && predicate((IWord)s))));
+        }
+
+        public IEnumerable<ISentenceItem> ReplaceWordByElements(Func<IWord, bool> predicate, IList<ISentenceItem> elements)
+        {
+            var resultSentence = new List<ISentenceItem>();
+            foreach (var item in SentenceItems)
+            {
+                if ((item is IWord) && predicate((item as IWord)))
+                {
+                    resultSentence.AddRange(elements);
+                    continue;
+                }
+                resultSentence.Add(item);
+            }
+            return resultSentence;
         }
 
         public override string ToString()
@@ -62,8 +82,7 @@ namespace TextApp.Model.Impl
                     PunctuationHelper.CloseSymbols.Contains(nextElement.Chars) ||
                     PunctuationHelper.InnerSymbols.Contains(nextElement.Chars) ||
                     PunctuationHelper.EndSymsols.Contains(nextElement.Chars) ||
-                    PunctuationHelper.EndSymsols.Contains(nextElement.Chars) ||
-                    PunctuationHelper.OpenSymbols.Contains(nextElement.Chars)) continue;
+                    PunctuationHelper.EndSymsols.Contains(nextElement.Chars) ) continue;
                 if (PunctuationHelper.CloseSymbols.Contains(SentenceItems[_index].Chars))
                 {
                     break;
@@ -74,7 +93,8 @@ namespace TextApp.Model.Impl
                     CombineSentenceItems(_index, sb);
                 }
 
-                if (!PunctuationHelper.CloseSymbols.Contains(nextElement.Chars))
+                if (!PunctuationHelper.CloseSymbols.Contains(nextElement.Chars) ||
+                    PunctuationHelper.OpenSymbols.Contains(nextElement.Chars))
                 {
                     sb.Append(" ");
                 }
