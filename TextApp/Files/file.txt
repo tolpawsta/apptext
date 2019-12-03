@@ -1,8 +1,30 @@
-
-    Как Потоки: работают, , ,с (байтами). Это гибко и эффективно, но не всегда 
-удобно, например  , когда приложение "имеет" дело с текстом или XML . Преодолеть 
-этот разрыв позволяют адаптеры,   ( они ) помещают поток в оболочку класса со 
-специальными ,   методами ; ; ;  для конкретного формата!    В [ отличие ] от декораторов 
-адаптеры   сами не являются    потоками, они обычно полностью скрывают ;
-байт-ориентированные методы !?
-Абстрактный класс Stream является базовым для всех потоков...
+ You can not be an effective developer without understanding how the envi-
+ronment handles memory and other   important resources. In NET, that 
+means understanding memory management and the garbage collector. 
+   The GC controls managed memory for you. Unlike in native environ-
+ments, you are not responsible for most memory leaks, dangling pointers, 
+uninitialized pointers  , , ,  or a host of other memory-management issues. 
+But the garbage collector works better when you need to clean up after 
+yourself. You are responsible for unmanaged resources such as database 
+connections, GDI+ objects  , COM objects, and other system objects. In 
+addition, you can cause objects to stay in memory longer than you’d like 
+because you have created links between them using event handlers or dele-
+gates. Queries, which execute when results are requested, can also cause 
+objects to remain referenced longer than you would expect ( see Item 41 ).
+   Here is the good news: Because the GC controls memory, certain design 
+idioms are much easier to implement than when you must manage all 
+memory yourself. Circular references , both simple relationships and 
+complex webs of objects, are much easier to implement correctly than 
+in environments where you must manage memory. The GC is Mark and 
+Compact algorithm efficiently detects these relationships and removes 
+unreachable webs of objects in their entirety.The EntitySet class provides an example of how this algorithm 
+simplifies object ownership decisions. An entity is a collection of objects 
+loaded from a database. Each entity may contain references to other entity 
+objects. Any of these entities may also contain links to other entities. Just 
+like the relational database entity sets model, these links and references 
+may be circular. 
+ StreamReader streamReader = new StreamReader(filePath, Encoding.Default);
+                IText text = parser.Parse(streamReader);
+              var sb = new StringBuilder();
+              CombineSentenceItems(-1, sb);
+            return sb.ToString();

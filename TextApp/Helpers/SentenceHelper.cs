@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TextApp.Model.Enum;
 
 namespace TextApp.Model
 {
     class SentenceHelper
     {
-       public static SentenceType GetSentenceType(ISentenceItem sentenceItem)
+        public static SentenceType GetSentenceType(ISentenceItem sentenceItem)
         {
             if (!(sentenceItem is IPunctuation))
             {

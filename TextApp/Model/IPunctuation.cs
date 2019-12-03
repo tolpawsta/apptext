@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TextApp.Model
+﻿namespace TextApp.Model
 {
-    interface IPunctuation:ISentenceItem
+    interface IPunctuation : ISentenceItem
     {
         Symbol Symbols { get; }
     }

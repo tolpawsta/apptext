@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TextApp.Model.Impl
 {
@@ -19,6 +16,6 @@ namespace TextApp.Model.Impl
 
         public int Length { get; }
 
-        public string Chars => new StringBuilder().Append(Symbols.Select(s => s.Chars)).ToString();
+        public string Chars => String.Join(String.Empty, Symbols.Select(s => s.Chars));
     }
 }

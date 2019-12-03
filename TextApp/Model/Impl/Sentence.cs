@@ -85,6 +85,7 @@ namespace TextApp.Model.Impl
                     PunctuationHelper.EndSymsols.Contains(nextElement.Chars) ) continue;
                 if (PunctuationHelper.CloseSymbols.Contains(SentenceItems[_index].Chars))
                 {
+                    
                     break;
                 }
                 if (PunctuationHelper.OpenSymbols.Contains(SentenceItems[_index].Chars) ||

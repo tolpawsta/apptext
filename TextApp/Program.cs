@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using TextApp.Model;
-using TextApp.Parser;
-using System.Collections.Specialized;
-using TextApp.View;
 using TextApp.Model.Enum;
+using TextApp.Parser;
+using TextApp.View;
 
 namespace TextApp
 {
@@ -17,7 +13,6 @@ namespace TextApp
     {
         static void Main(string[] args)
         {
-
             var parser = new TextParser();
             var view = new ConsoleView();
             var lineSeparator = "============================================";
@@ -45,7 +40,7 @@ namespace TextApp
 
                 view.Show("Remove from text all words with concrete length and starting with initial type symbol");
                 view.Show(lineSeparator);
-                text.RemoveAllWordsStartingWhis(4,InitialSymbolType.Consonant);
+                text.RemoveAllWordsStartingWhis(4, InitialSymbolType.Consonant);
                 view.Show(text.ToString());
                 view.Show(lineSeparator);
 

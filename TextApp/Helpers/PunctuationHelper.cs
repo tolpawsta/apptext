@@ -8,10 +8,10 @@ namespace TextApp.Helpers
 {
     class PunctuationHelper
     {
-        public static string[] RepeatSymbols { get; } = {"\"","'" };
-        public static string[] EndSymsols { get; } = { "!", ".", "?", "...", "?!", "!?" };
+        public static string[] RepeatSymbols { get; } = { "\"", "'" };
+        public static string[] EndSymsols { get; } = { "!", ".", "?", "...", "?!", "!?", ");",";"};
 
-        public static string[] InnerSymbols { get; } = { ",", ";", ":" };
+        public static string[] InnerSymbols { get; } = { ",", ":" };
 
         public static string[] OpenSymbols { get; } = { "<", "(", "[", "{", "„", "«", "‘" };
 
@@ -19,7 +19,7 @@ namespace TextApp.Helpers
 
         public static string[] AllSymbols { get; } = {
             ",", ".", "!", "?", "—", "-", "\"", "'", "(", ")",
-            "<", ">", ":", ";", "[", "]", "{", "}", "‒", "–", "—",
+            "<", ">", ":", ";",");","[", "]", "{", "}", "‒", "–", "—",
             "―", "„", "“", "«", "»", "‘", "’", "...", "?!", "!?", "*", "/", "=", "==", "!=", ">=", "=<", "+","\\r\\n"
         };
 
